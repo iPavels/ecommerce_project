@@ -50,12 +50,7 @@ class Product:
                         product.price = data["price"]
                     return product
 
-        return cls(
-            data["name"],
-            data["description"],
-            data["price"],
-            data["quantity"]
-        )
+        return cls(data["name"], data["description"], data["price"], data["quantity"])
 
     def __str__(self) -> str:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
