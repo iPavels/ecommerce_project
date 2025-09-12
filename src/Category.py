@@ -17,27 +17,22 @@ class Category:
     def __init__(self, name, description, products: [Product]) -> None:
         self.name = name
         self.description = description
-        self.__products: list[products] = []
+        self.__products = products if products else []
 
         Category.category_count += 1
-        Category.product_count += len(self.products)
+        Category.product_count += len(self.__products)
 
     def add_product(self, product: Product) -> None:
-        """Добавляет продукт в категорию и увеличивает счетчик продуктов."""
+        """Добавляет продукт в категорию"""
         self.__products.append(product)
         Category.product_count += 1
 
     @property
     def products(self) -> str:
-        """Возвращает строку со всеми продуктами в категории."""
+        """Геттер: возвращает строку со всеми продуктами"""
         return "\n".join(str(product) for product in self.__products)
 
     @classmethod
-    def new_product(cls, product_data: dict) -> Product:
-        """Создает новый объект Product из словаря."""
-        return Product(
-            name=product_data["name"],
-            description=product_data["description"],
-            price=product_data["price"],
-            quantity=product_data["quantity"],
-        )
+    def new_product(cls, data: dict) -> Product:
+        """Создает новый объект Product из словаря"""
+        return Product.new_product(data)
