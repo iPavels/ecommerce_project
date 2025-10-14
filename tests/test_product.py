@@ -33,13 +33,11 @@ def test_product_new_product():
     assert product.quantity == 2
 
 
-#  Новый тест для строкового представления продукта (__str__)
 def test_product_str():
     p = Product("Телефон", "Смартфон", 80, 15)
     assert str(p) == "Телефон, 80 руб. Остаток: 15 шт."
 
 
-# 🔹 Новый тест для корректной работа сложения двух продуктов (__add__)
 def test_product_add():
     a = Product("Телефон", "Смартфон", 100, 10)
     b = Product("Ноутбук", "Игровой", 200, 2)
@@ -47,7 +45,6 @@ def test_product_add():
     assert result == 1400  # 100*10 + 200*2
 
 
-# 🔹 Новый тест проверки ошибки при сложении с неподдерживаемым типом
 def test_product_add_type_error():
     a = Product("Телефон", "Смартфон", 100, 10)
     with pytest.raises(
