@@ -31,3 +31,23 @@ def test_product_new_product():
     assert product.name == "Ноутбук"
     assert product.price == 80000
     assert product.quantity == 2
+
+
+def test_product_str():
+    p = Product("Телефон", "Смартфон", 80, 15)
+    assert str(p) == "Телефон, 80 руб. Остаток: 15 шт."
+
+
+def test_product_add():
+    a = Product("Телефон", "Смартфон", 100, 10)
+    b = Product("Ноутбук", "Игровой", 200, 2)
+    result = a + b
+    assert result == 1400  # 100*10 + 200*2
+
+
+def test_product_add_type_error():
+    a = Product("Телефон", "Смартфон", 100, 10)
+    with pytest.raises(
+        TypeError, match="Складывать можно только объекты класса Product"
+    ):
+        a + 10

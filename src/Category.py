@@ -41,3 +41,8 @@ class Category:
     def new_product(cls, data: dict) -> Product:
         """Создает новый объект Product из словаря"""
         return Product.new_product(data)
+
+    def __str__(self) -> str:
+        """Строковое отображение категории"""
+        total_quantity = sum(product.quantity for product in self.__products)
+        return f"{self.name}, количество продуктов: {total_quantity} шт."

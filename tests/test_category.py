@@ -1,3 +1,5 @@
+import pytest
+
 from src.Category import Category
 from src.Product import Product
 
@@ -46,3 +48,20 @@ def test_category_new_product():
     assert product.name == "Планшет"
     assert product.price == 30000
     assert product.quantity == 6
+
+
+def test_category_str():
+    p1 = Product("Телефон", "Смартфон", 25000, 5)
+    p2 = Product("Ноутбук", "Игровой", 80000, 3)
+    c = Category("Электроника", "Гаджеты", [p1, p2])
+
+    result = str(c)
+    assert result == "Электроника, количество продуктов: 8 шт."
+
+
+def test_category_add_product_type_error():
+    c = Category("Одежда", "Мужская", [])
+    with pytest.raises(
+        TypeError, match="Можно добавлять только объекты класса Product"
+    ):
+        c.add_product("не продукт")
