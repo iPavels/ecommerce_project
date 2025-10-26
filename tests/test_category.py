@@ -62,6 +62,6 @@ def test_category_str():
 def test_category_add_product_type_error():
     c = Category("Одежда", "Мужская", [])
     with pytest.raises(
-        TypeError, match="Можно добавлять только объекты класса Product"
+        TypeError, match="Можно добавлять только объекты класса Product или его наследников"
     ):
         c.add_product("не продукт")
