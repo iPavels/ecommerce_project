@@ -1,6 +1,6 @@
 import pytest
 
-from src.Product import Product, Smartphone, LawnGrass
+from src.Product import LawnGrass, Product, Smartphone
 
 
 def test_product_init_and_getter():
@@ -54,7 +54,7 @@ def test_product_add_type_error():
 
 
 def test_product_add_different_types():
-    """ Проверка, что нельзя складывать разные типы продуктов"""
+    """Проверка, что нельзя складывать разные типы продуктов"""
 
     s = Smartphone("iPhone", "Телефон", 100000, 2, "A15", "Pro", 256, "черный")
     g = LawnGrass("Газон", "Трава", 500, 10, "Россия", 30, "зеленая")

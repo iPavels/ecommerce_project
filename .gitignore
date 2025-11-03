@@ -24,7 +24,7 @@ env/
 *.log
 
 # ---- Coverage / Testing ----
-htmlcov/
+#htmlcov/
 .tox/
 .nox/
 .coverage
