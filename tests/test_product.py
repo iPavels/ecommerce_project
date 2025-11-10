@@ -61,3 +61,19 @@ def test_product_add_different_types():
 
     with pytest.raises(TypeError, match="Нельзя складывать товары разных типов"):
         _ = s + g
+
+
+def test_smartphone_inherits_product():
+    """Проверка, что смартфон наследуется от Product и имеет свои атрибуты"""
+    phone = Smartphone("iPhone", "смартфон", 100000, 2, "A15", "13 Pro", "128GB", "Silver")
+    assert isinstance(phone, Product)
+    assert phone.model == "13 Pro"
+    assert phone.memory == "128GB"
+
+
+def test_lawngrass_inherits_product():
+    """Проверка, что трава газонная наследуется от Product и имеет свои атрибуты"""
+    grass = LawnGrass("Газон", "Трава", 500, 3, "Россия", "7 дней", "Зеленый")
+    assert isinstance(grass, Product)
+    assert grass.country == "Россия"
+    assert grass.color == "Зеленый"
