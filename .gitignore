@@ -24,7 +24,7 @@ env/
 *.log
 
 # ---- Coverage / Testing ----
-htmlcov/
+
 .tox/
 .nox/
 .coverage
@@ -40,3 +40,6 @@ coverage.xml
 # ---- OS files ----
 .DS_Store
 Thumbs.db
+
+# Allow coverage HTML reports
+

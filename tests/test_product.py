@@ -1,6 +1,6 @@
 import pytest
 
-from src.Product import Product
+from src.Product import LawnGrass, Product, Smartphone
 
 
 def test_product_init_and_getter():
@@ -51,3 +51,13 @@ def test_product_add_type_error():
         TypeError, match="Складывать можно только объекты класса Product"
     ):
         a + 10
+
+
+def test_product_add_different_types():
+    """Проверка, что нельзя складывать разные типы продуктов"""
+
+    s = Smartphone("iPhone", "Телефон", 100000, 2, "A15", "Pro", 256, "черный")
+    g = LawnGrass("Газон", "Трава", 500, 10, "Россия", 30, "зеленая")
+
+    with pytest.raises(TypeError, match="Нельзя складывать товары разных типов"):
+        _ = s + g
