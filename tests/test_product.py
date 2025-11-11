@@ -65,7 +65,9 @@ def test_product_add_different_types():
 
 def test_smartphone_inherits_product():
     """Проверка, что смартфон наследуется от Product и имеет свои атрибуты"""
-    phone = Smartphone("iPhone", "смартфон", 100000, 2, "A15", "13 Pro", "128GB", "Silver")
+    phone = Smartphone(
+        "iPhone", "смартфон", 100000, 2, "A15", "13 Pro", "128GB", "Silver"
+    )
     assert isinstance(phone, Product)
     assert phone.model == "13 Pro"
     assert phone.memory == "128GB"
