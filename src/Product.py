@@ -1,14 +1,19 @@
-class Product:
+from src.BaseProduct import BaseProduct
+
+
+class MixinLog:
+    def __init__(self, *args, **kwargs):
+        class_name = self.__class__.__name__
+        print(f"Создан объект класса {class_name} с параметрами: {args}, {kwargs}")
+
+
+class Product(MixinLog, BaseProduct):
     """
     Класс для описания продукта
     """
 
-    name: str
-    description: str
-    price: int
-    quantity: int
-
     def __init__(self, name, description, price, quantity):
+        super().__init__(name, description, price, quantity)
         self.name = name
         self.description = description
         self.__price = price
