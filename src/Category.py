@@ -33,8 +33,9 @@ class Category:
         Category.product_count += 1
 
     @property
-    def products(self) -> list[Product]:
-        return self.__products
+    def products(self) -> str:
+        """Возвращает строковое представление всех товаров."""
+        return "\n".join(str(product) for product in self.__products)
 
     @classmethod
     def new_product(cls, data: dict) -> Product:
@@ -49,7 +50,6 @@ class Category:
             return total / count
         except ZeroDivisionError:
             return 0
-
 
     def __str__(self) -> str:
         """Строковое отображение категории"""

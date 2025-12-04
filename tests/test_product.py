@@ -61,3 +61,11 @@ def test_product_add_different_types():
 
     with pytest.raises(TypeError, match="Нельзя складывать товары разных типов"):
         _ = s + g
+
+
+def test_product_zero_quantity_raises_error():
+    """Создание продукта с quantity=0 должно вызывать ValueError"""
+    with pytest.raises(ValueError) as exc:
+        Product("Test", "Desc", 100, 0)
+
+    assert str(exc.value) == "Товар с нулевым количеством не может быть добавлен"
