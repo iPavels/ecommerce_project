@@ -33,14 +33,23 @@ class Category:
         Category.product_count += 1
 
     @property
-    def products(self) -> str:
-        """Геттер: возвращает строку со всеми продуктами"""
-        return "\n".join(str(product) for product in self.__products)
+    def products(self) -> list[Product]:
+        return self.__products
 
     @classmethod
     def new_product(cls, data: dict) -> Product:
         """Создает новый объект Product из словаря"""
         return Product.new_product(data)
+
+    def get_average_price(self):
+        """Возвращает среднюю цену товаров в категории"""
+        try:
+            total = sum(product.price for product in self.__products)
+            count = len(self.__products)
+            return total / count
+        except ZeroDivisionError:
+            return 0
+
 
     def __str__(self) -> str:
         """Строковое отображение категории"""
