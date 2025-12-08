@@ -63,9 +63,27 @@ def test_product_add_different_types():
         _ = s + g
 
 
+
 def test_product_zero_quantity_raises_error():
     """Создание продукта с quantity=0 должно вызывать ValueError"""
     with pytest.raises(ValueError) as exc:
         Product("Test", "Desc", 100, 0)
 
-    assert str(exc.value) == "Товар с нулевым количеством не может быть добавлен"
+    assert str(exc.value) == "Товар с нулевым количеством не может быть добавлен
+def test_smartphone_inherits_product():
+    """Проверка, что смартфон наследуется от Product и имеет свои атрибуты"""
+    phone = Smartphone(
+        "iPhone", "смартфон", 100000, 2, "A15", "13 Pro", "128GB", "Silver"
+    )
+    assert isinstance(phone, Product)
+    assert phone.model == "13 Pro"
+    assert phone.memory == "128GB"
+
+
+def test_lawngrass_inherits_product():
+    """Проверка, что трава газонная наследуется от Product и имеет свои атрибуты"""
+    grass = LawnGrass("Газон", "Трава", 500, 3, "Россия", "7 дней", "Зеленый")
+    assert isinstance(grass, Product)
+    assert grass.country == "Россия"
+    assert grass.color == "Зеленый"
+
