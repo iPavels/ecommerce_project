@@ -66,3 +66,12 @@ def test_category_add_product_type_error():
         match="Можно добавлять только объекты класса Product или его наследников",
     ):
         c.add_product("не продукт")
+
+
+def test_get_average_price():
+    """Проверяем среднюю цену"""
+    p1 = Product("A", "desc", 100, 2)
+    p2 = Product("B", "desc", 200, 3)
+    cat = Category("Test", "desc", [p1, p2])
+
+    assert cat.get_average_price() == 150
